@@ -1,5 +1,18 @@
 # UCMCO5607 - Ethical Hacking
 
+Videos:
+
+* <https://www.youtube.com/watch?v=c0gPkwlw25A>
+* <https://www.youtube.com/watch?v=evFTF_nnLAY>
+
+* <https://www.youtube.com/watch?v=NKYU8V3I-a0>
+* <https://www.youtube.com/watch?v=xV6iHhQy3yQ>
+* <https://www.youtube.com/watch?v=mS5W456mQCQ>
+* <https://www.youtube.com/watch?v=Qrnc7GcIxto>
+* <https://www.youtube.com/watch?v=2nKgZxIPDWc>
+
+
+
 Shared folder location
 <C:\work\forensics>
 
@@ -119,6 +132,8 @@ cd /home/cyber/soft/edb-build/
 
 Then open the program and open our first assembler program that we have just written.
 
+File > Open
+
 file location:
 
 ```bash
@@ -127,8 +142,65 @@ file location:
 
 Note that exit64 is actuallly the executable file that we created.
 
-Minimise the edb output screen and change the font size Options> references > Appearance > DEfault register view font > 8
+* Minimise the edb output screen 
+* change the font size Options> references > Appearance > DEfault register view font > 8
 
 EDB disassembles the program and shows the assembly code.
 
-video 1 18:15
+![img1](img/img1.png)
+
+``` assembly
+mov eax, 0x3c  ;is the same as: mov rax, 60
+```
+
+because EDB reassembles the code and it can look a bit different.
+Its effectively the same becasue `eax` and `rax` are the same register but `eax` is the lower 32 bits of `rax` (rax is the full 64 bits). We dont need all eight bytes to store the number 60 so we can use the lower 32 bits. eax is the lower 4 bytes of rax.
+
+Also 60 represented in hex is 3c - the 0x is just a prefix to show that the number is in hex.
+
+``` assembly
+
+mov edi, 0  ;is the same as mov rdi, 0
+```
+
+Also edi is the 32 bit version of rdi. So when we see `mov edi, 5` in the assembly code it is the same as `mov rdi, 5` in the original code.
+
+syscall is the same as the original code.
+
+Note in assembler `mov` esseentially means copy. So `mov eax, 0x3c` means copy the value 0x3c into the eax register.
+
+### Stepping into the assembler code when it executes
+
+In the ribbon at the top use the step into button to step through the code.
+
+First line of code is `mov eax, 0x3c` so we are copying the value 0x3c into the eax register.
+![img2](img/img2.png)
+
+Second line of code is `mov edi, 0` so we are copying the value 0 into the edi register.
+![img3](img/img3.png)
+
+Third line of code is `syscall` so we are making the system call i.e. goes into the kernel (gps: and the kernel will look at the registers and see that eax has 60 and edi has 0 and it will do the exit system call.)
+
+If you do a final step into then the program will exit - with the following message:
+
+![img4](img/img4.png)
+
+### Binary code
+
+EDB first shows the binary code that it is executing in the top left panel. Then in the top middle pannel it shows the disaemmbled equivalent code of the binary code. Then in the top right panel it shows the registers and their values.
+
+The binary code in EDB is represented in hexidecimal notation.
+b8 in hex means mov in assembly language and 3c is the hexidecimal representation of 60.
+
+### Stepping through code with the debugger and changing the return code
+
+If you want to change the exit code from 0 to 5 then you can do this by changing the value in the edi register from 0 to 5 - in the top middle panel of EDB right click on the relevant line of assembly code  > edit > binary edit > change the Hex value from 0 to 5.
+
+Then step through the code unti the end i.e. after the syscall and you will see that the exit code is 5.
+
+![img5](img/img5.png)
+
+
+
+
+
