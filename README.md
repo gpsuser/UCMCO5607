@@ -2,13 +2,32 @@
 
 Videos:
 
+Install Virtual Box
+
 * <https://www.youtube.com/watch?v=c0gPkwlw25A>
+
+Import Fedora VM
+
 * <https://www.youtube.com/watch?v=evFTF_nnLAY>
 
+Workshop 1 Part 1 - exit64.s
+
 * <https://www.youtube.com/watch?v=NKYU8V3I-a0>
+
+Workshop 1 Part 2 - write64.s
+
 * <https://www.youtube.com/watch?v=xV6iHhQy3yQ>
+
+Workshop2 - Loop and Function calling - part1
+
 * <https://www.youtube.com/watch?v=mS5W456mQCQ>
+
+Workshop2 - Loop and Function calling - part2
+
 * <https://www.youtube.com/watch?v=Qrnc7GcIxto>
+
+Workshop 3
+
 * <https://www.youtube.com/watch?v=2nKgZxIPDWc>
 
 
@@ -16,7 +35,8 @@ Videos:
 Shared folder location
 <C:\work\forensics>
 
-## First Assembly Program
+## Workshop 1 - Part 1 exit64.s
+
 
 ```assembly
 section .text
@@ -28,28 +48,24 @@ _start:
   syscall           ; make the call
 ```
 
-## Description of first Assembly program
+### Description of first Assembly program
 
-section .text
-Code lives in text section of the assembler file
+```assembly
+section .text   ;Code lives in text section of the assembler file
 
-section .data
-Data would live in the data section of the file
+section .data   ;Data would live in the data section of the file
 
+global _start   ;This is the label that defines where the program starts
 
-global _start
-This is the label that defines where the program starts
+_start:         ;This is where the program goes to to start
 
-_start
-This is where the program goes to to start
+mov rax, 60     ;This is the first instruction in the program. It moves the value 60 into the rax register
 
-mov rax, 60
-Moves the value 60 to the rax register
+mov rdi, 5      ;Moves the value 5 to the rdi register
 
-mov rdi, 5
-Moves the value 5 to the rdi register
+syscall         ;This is the system call that will call the exit() function
+```
 
-syscall
 USE THIS WEBSITE: https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
 
 Go to the rax column and find 60 - which shows "sys_exit"
@@ -200,6 +216,8 @@ Then step through the code unti the end i.e. after the syscall and you will see 
 
 ![img5](img/img5.png)
 
+
+## Workshop 1 - Part 2 write64.s
 
 
 
