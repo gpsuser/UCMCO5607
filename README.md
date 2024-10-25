@@ -219,6 +219,75 @@ Then step through the code unti the end i.e. after the syscall and you will see 
 
 ## Workshop 1 - Part 2 write64.s
 
+Now looking at workshop 1 Write syscall
+
+```assembly
+global _start
+
+section .text
+
+_start:
+  mov rax, 1        ; write(
+  mov rdi, 1        ;   STDOUT_FILENO,
+  mov rsi, msg      ;   "Hello, world!\n",
+  mov rdx, msglen   ;   sizeof("Hello, world!\n")
+  syscall           ; );
+
+  mov rax, 60       ; exit(
+  mov rdi, 0        ;   EXIT_SUCCESS
+  syscall           ; );
+
+section .rodata
+  msg: db "Hello, world!", 10
+  msglen: equ $ - msg
+  ```
+
+Note:
+
+### `section .text` is where the code lives
+
+First we need to set up the syscall to write to the screen
+
+* `rax` stores what syscall we want to use - we need the `write` syscall, which is 1 (see: <https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/>)
+
+Next, we see the values it takes: rdi , rsi (source index), rdx (general purpose register). 
+
+rdi is the file descriptor, 
+rsi is the buffer and 
+rdx is the size of the buffer.
+
+rdi is an unsigned integer `unsigned int fd` where fd stands for file descriptor. 1 is the file descriptor for `STDOUT_FILENO` which is the standard output file descriptor. Recall that in linux - everything is s file i.e. the disk is a file, the screen is a file, memory is a file etc. 
+
+the `*buf` is the buffer which is the actual message `char*` is effectively a string.
+
+`size_t` is the same as an integer where `count` is the number of bytes to write - i.e. the size of the buffer.
+
+
+5:55 video  workshop 1 part 2
+
+
+### `section .rodata` is where the read only data lives
+
+two variables msg and msglen
+
+`db` says define the `msg` variable as bytes
+"Hello, world!" is the string value that `msg` holds - which is turned into ASCII and the `10` below is appended on to it.
+
+`10` is the newline character - and is a deimal 10 if you look at the `Dec` column in the  ASCII chart in the `man` pages as follows:
+  
+  ```bash
+  man ascii
+  ```
+
+`msglen` is set equal i.e. `equ` to whatever the length of `msg` is.  This length is in bytes  i.e. each charater is represented in one byte. So if we count the characers we get 13 characters i.e. 13 bytes - which will be stored in `msglen`
+
+
+
+
+
+
+
+
 
 
 
