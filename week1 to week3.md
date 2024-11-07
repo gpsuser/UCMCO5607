@@ -153,28 +153,20 @@ We separate into the individual modules core content.
 
 ###    Assembly Instructions Category 	Instructions 	Covered?
 
-    Movement 	mov, xchg
-    	mov: Day 1
-    xchg: Day -
-    Stack 	push, pop
-    	Day 4
-    Maths 	add, sub, mul, div, inc, dec
-    	add: Day 1
-    others: Day -
+    Movement 	mov, xchg   mov: Day 1
+                            xchg: Day -
+    Stack 	push, pop    	Day 4
+    Maths 	add, sub, mul, div, inc, dec  	add: Day 1
+                                            others: Day -
     Logic 	and, or, not, xor
     	
     Shiftiness 	shl, shr, rol, ror
     	
-    Conditions 	jl, jg, je, jne, jmp, cmp
-    	Day 2
-    Subroutines 	call, ret
-    	Day 2
-    Randomness
-    	rdrand 	
-    No Operation
-    	nop 	
-    Syscall 	int, syscall
-    	syscall: Day 1
+    Conditions 	jl, jg, je, jne, jmp, cmp  	Day 2
+    Subroutines 	call, ret           	Day 2
+    Randomness 	rdrand 	
+    No Operation 	nop 	
+    Syscall 	int, syscall     	syscall: Day 1
 
     We will assemble programs using the nasm tool at the command line, and then link the object code using ld:
 
