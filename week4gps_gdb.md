@@ -1,5 +1,10 @@
 # Using GDB
 
+
+* also use: Week4_ buffer-overflow-exploitation.pdf
+* week 5 functions and the stack
+* No - week4 1 GDB AND Function-calling-conventions-examples
+
 ## Introduction
 
 GDB is a powerful debugger that can be used to debug C and C++ programs. It can be used to set breakpoints, step through code, inspect variables, and more. In this workshop, we will use GDB to debug some simple C programs.
