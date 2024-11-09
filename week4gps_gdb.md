@@ -57,15 +57,12 @@ break main
 You can run the program in GDB using the `run` command. For example, to run the program, you can use the following command:
 
 ```bash
+(gdb) break main
+(gdb) break helper_function 
 (gdb) run
-
-
 (gdb) print a
 (gdb) print b
-
-
 (gdb) next
-
 
 (gdb) print &a
 (gdb) x /4xb &a
