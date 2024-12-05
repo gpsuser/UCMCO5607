@@ -1,6 +1,8 @@
-# Understanding Stack Canaries and Buffer Overflow Detection
+# Week 8 - Software Protection Mechanisms
 
-This tutorial explains how stack canaries work as a security mechanism for detecting buffer overflows, with a practical C code example.
+## Understanding Stack Canaries and Buffer Overflow Detection
+
+This lecture content explains how stack canaries work as a security mechanism for detecting buffer overflows, with a practical C code example.
 
 ## Introduction
 
