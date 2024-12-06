@@ -535,3 +535,38 @@ Role in Detection: Performs continuous validation during program execution to de
 
 This glossary covers the technical terms used in modern buffer overflow protection systems. Each mechanism plays a specific role in either preventing overflows or detecting them when they occur. The most effective protection comes from combining multiple mechanisms, as each addresses different aspects of the overflow problem.
 
+## A Note on 0xDEADBEEF
+
+0xDEADBEEF is a hexadecimal value that's commonly used as a magic number or memory marker in debugging and testing. Here is a break down:
+
+In hexadecimal (base-16):
+0xDEADBEEF
+
+Converting to decimal (base-10):
+3735928559
+
+Breaking it down by bytes:
+- DE = 222 in decimal
+- AD = 173 in decimal
+- BE = 190 in decimal
+- EF = 239 in decimal
+
+In ASCII text, if you try to interpret each byte as a character:
+- 0xDE - 'Þ' (latin capital letter thorn)
+- 0xAD - '­' (soft hyphen)
+- 0xBE - '¾' (vulgar fraction three quarters)
+- 0xEF - 'ï' (latin small letter i with diaeresis)
+
+The value 0xDEADBEEF was historically chosen because:
+1. It's easily recognizable in memory dumps
+2. The word "DEAD" is visible in the hex representation
+3. It's an unlikely value to occur randomly
+4. In binary, it has a good mix of 1s and 0s: 11011110101011011011111011101111
+
+In our canary example, we use it as a demonstration value, but in real-world applications, you would never use a known constant like this - you would use a random value instead. Using a known constant like 0xDEADBEEF would defeat the purpose of the canary since attackers would know the value they need to preserve during an overflow attack.
+
+Other common "magic numbers" used in debugging include:
+- 0xCAFEBABE (used in Java class files)
+- 0xFEEDFACE (used in Mach-O files)
+- 0xBAADF00D (used to mark uninitialized memory)
+- 0xDEADC0DE (used as a marker in some debugging scenarios)
