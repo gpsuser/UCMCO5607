@@ -3,7 +3,7 @@
 
 ### Introduction
 
-Welcome to Week 9 of our Computer Security course. Today, we'll explore Return Oriented Programming (ROP), a sophisticated exploitation technique that has fundamentally changed how we think about memory corruption attacks. This lecture is designed to give you both theoretical understanding and practical insights into ROP attacks and defenses.
+Today, we'll explore Return Oriented Programming (ROP), a sophisticated exploitation technique that has fundamentally changed how we think about memory corruption attacks. This lecture is designed to give you both theoretical understanding and practical insights into ROP attacks and defenses.
 
 ### Learning Objectives
 
