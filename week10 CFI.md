@@ -10,6 +10,7 @@ CFI is implemented through a multi-stage process, which includes:
 
 `Purpose`: This phase analyzes the program's source code or binary without actually executing it. The goal is to identify all legitimate control flow paths.
 `Process`:
+
 * `Disassembly/Decompilation`: If starting from a binary, the code is disassembled to understand its instructions. If source code is available, it might be decompiled into an intermediate representation.
 
 * `Control Flow Graph (CFG) Construction`: A CFG is created to represent the program's control flow. Nodes in the CFG represent basic blocks of code (sequences of instructions with a single entry and exit point), and edges represent possible jumps or branches between these blocks.
