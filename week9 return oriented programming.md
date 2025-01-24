@@ -143,7 +143,7 @@ Study of ROP exploitation in a mail server:
 - Complex ROP chain to achieve privilege escalation
 - Successfully bypassed multiple security mechanisms
 
-[... Content continues with sections 4-7, including defensive mechanisms, advanced techniques, practical examples, and future trends ...]
+
 
 ### Conclusion
 
