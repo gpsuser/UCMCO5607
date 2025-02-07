@@ -1,4 +1,4 @@
-# Lecture 13 - Intreoduction to Networking and Wireshark
+# Lecture 13 - Introduction to Networking and Wireshark
 
 ## Introduction
 
@@ -67,7 +67,7 @@ For example, port 80 is mapped to the HTTP service, which is used to serve web p
 Interstingly enough port 80 for example is the default port for HTTP, but it is not the only port that can be used for HTTP. In fact, any port can be used for any service, as long as both the client and server agree on the port number. This is why port numbers are important in networking, as they allow multiple services to run on the same computer and communicate with each other. 
 
 - If pport 80 is available it means that there is a web server running on the computer. The web server is listening on port 80 for incoming requests. 
-- Typically on port 8 0 everything is sent in plain text. 
+- Typically on port 80 everything is sent in plain text. 
 - If the web server is running on port 443, it means that the web server is using HTTPS, which is a secure version of HTTP that encrypts the data being sent between the client and server.
 
 Port are typically used to:
@@ -144,36 +144,25 @@ So a single network packet in theory has to pass through all seven layers of the
 
 This process is known as encapsulation, and it allows the packet to be transmitted over the network and delivered to the correct destination.
 
-Not much attention is paid to layers 5 and 6 in the OSI model, as they are not as relevant to network communication as the other layers. Layers 5 and 6 are responsible for establishing, maintaining, and terminating connections between devices on a network, and for encrypting and decrypting data being transmitted. 
-
-- These functions are important for secure communication between devices, but are not as critical to network communication as the other layers.
-
-A very important layer is the transport layer, which is responsible for end-to-end connections and reliability. The transport layer is where the TCP and UDP protocols operate, which are used to establish connections between devices and ensure the reliable delivery of data. 
+A very important layer is the transport layer, which is responsible for end-to-end connections and reliability. The transport layer is where the TCP and UDP protocols operate.
 
 TCP is a connection-oriented protocol that guarantees the delivery of data in the order it was sent, while UDP is a connectionless protocol that does not guarantee the delivery of data. These protocols are used to transmit data between devices on a network and ensure that the data is delivered correctly and efficiently.
 
 ## PCAP files
 
-PCAP stands for Packet Capture, and is a file format used by network analyzers to capture and analyze network traffic. A PCAP file contains the raw data packets captured from the network, as well as the metadata associated with the packets, such as the source and destination addresses, the protocol used, and the size of the packet. 
+PCAP stands for Packet Capture, and is a file format used by network analyzers to capture and analyze network traffic. 
+
+A PCAP file contains the raw data packets captured from the network, as well as the metadata associated with the packets, such as the source and destination addresses, the protocol used, and the size of the packet. 
 
 PCAP files are used to troubleshoot network communication issues, analyze network traffic, and monitor network performance. They can be used to capture and analyze the data packets of various network protocols, including TCP, UDP, HTTP, and others. 
 
-PCAP files can be captured from both wired and wireless networks, and can be used to analyze the data packets of both local and remote networks.
-
-A PCAP file is a packet capture file that contains data captured from a network. It is used by network analyzers, such as Wireshark, to analyze the data packets traveling on the network. 
-
-A PCAP file contains the raw data packets captured from the network, as well as the metadata associated with the packets, such as the source and destination addresses, the protocol used, and the size of the packet.
+- PCAP files can be captured from both wired and wireless networks, and can be used to analyze the data packets of both local and remote networks.
 
 A 100MB PCAP file, for example, contains thousands of data packets captured from the network. Each packet contains information about the source and destination addresses, the protocol used, the size of the packet, and other metadata. 
 
 - This information can be used to analyze the network traffic, troubleshoot network communication issues, and monitor network performance.
 
-PCAP files are used to troubleshoot network communication issues, analyze network traffic, and monitor network performance. 
-
-- They can be used to capture and analyze the data packets of various network protocols, including TCP, UDP, HTTP, and others. 
-- PCAP files can be captured from both wired and wireless networks, and can be used to analyze the data packets of both local and remote networks.
-
-PCAP files are commonly used by network administrators, security analysts, and developers to diagnose network problems, identify security threats, and optimize network performance. 
+PCAP files are commonly used by network administrators, security analysts, and developers to diagnose network problems, identify security threats, and optimize network performance.
 
 They are an essential tool for monitoring and analyzing network traffic, and can provide valuable insights into the operation of a network.
 
@@ -211,35 +200,19 @@ Packet analysis is the process of capturing and analyzing data packets traveling
 
 - TCP is a reliable protocol, and it guarantees that the data will be delivered in the same order in which it was sent
 
-- TCP is a connection-oriented protocol, which means that it requires a connection to be established between the two communicating systems before data is exchanged
+## Wireshark high level functionality
 
-- TCP is a reliable protocol, which means that it guarantees the delivery of data to the destination system
+As mentioned earlier, Wireshark is a network protocol analyzer that captures and displays the data traveling back and forth on a network. 
 
-## Wireshark
+In particular, it can be used to capture or analyse the TCP three-way handshake between two systems, which we will investigate in more detail in our first example below.
 
-As mentioned earlier, Wireshark is a network protocol analyzer that captures and displays the data traveling back and forth on a network. It can be used to capture the TCP three-way handshake between two systems.
+First we need to open a terminal window and get ready to start Wireshark.
 
-- To capture the TCP three-way handshake, start Wireshark and select the network interface that is connected to the network where the communication is taking place
+```bash
+$ wireshark
+```
 
-- Once the network interface is selected, Wireshark will start capturing the data packets traveling on the network
-
-- To capture the TCP three-way handshake, filter the captured packets by the IP addresses of the two systems involved in the communication
-
-- The three packets of the TCP three-way handshake will be displayed in the Wireshark capture, showing the SYN, SYN-ACK, and ACK packets
-
-- The captured packets can be analyzed to see the details of the TCP three-way handshake, including the sequence numbers, window sizes, and other connection parameters
-
-Wireshark can be used to:
-
-- troubleshoot network communication issues by capturing and analyzing the data packets traveling on the network
-- analyze network traffic by capturing and displaying the data packets traveling on the network
-- identify security threats by capturing and analyzing the data packets traveling on the network
-- optimize network performance by capturing and analyzing the data packets traveling on the network
-- record network activity by capturing and analyzing the data packets traveling on the network
-- catch network problems by capturing and analyzing the data packets traveling on the network
-- understand network protocols by capturing and analyzing the data packets traveling on the network
-- learn about network traffic patterns by capturing and analyzing the data packets traveling on the network
-
+Next we considedr the wireshark interface and we start preparing the file to be used in the initial example.
 
 ### The wireshark interface
 
@@ -247,15 +220,18 @@ Wireshark can be used to:
 
 [img1](/img/img1_wiresharkinterface.png)
 
-## PCAP file location
+### PCAP file location
 
 Pcap file location `git clone https://github.com/mchow01/Bootcamp`
 
-At the terminal start wireshark:
+cd to the Bootcamp directory and list the contents:
 
 ```bash
-$ wireshark
+cd Bootcamp
+ls
 ```
+
+Our first excample will be to open the `set1.pcap` file in the Bootcamp directory. Before we use the Wireshark GUI, we can also check the raw contents in bash:
 
 checking the raw conents in bash:
 
@@ -263,26 +239,40 @@ checking the raw conents in bash:
 cat set1.pcap
 ```
 
-## Wireshark exercise
+We notice that this is a small file - whose contents is still not human readable. So we turn to wireshark to help us understand the contents of the file.
 
-Open the pcap file by going to `File` -> `Open` and selecting the `set1.pcap` file in the `Bootcamp` directory
+## The Wireshark interface - exercise
 
-Click on any packet and notice the packet details change (and binary details) in the packet details pane
+For this first example, open the pcap file by going to `File` -> `Open` and selecting the `set1.pcap` file in the `Bootcamp` directory.
 
-questions:
+Next, click on any packet and notice the packet details change (and binary details) in the packet details pane
 
-1. How many ppackets are there?   8
-2. What network protocol is being used? TCP 
-3. What is the IP address of the source ? 192.168.1.3
-4. What is the IP address of the destination? 192.168.1.8
-5. What is the port number the destination is listening on?  7777 and the source is listening on 49859
-6. Do you notice the TCP three-way handshake in the packet list pane? - yes you see the SYN, SYN ACK  , ACK pattern
+Questions:
 
-In the packet details pane we see FRame, Ethernet (layer 2), IP (layer 3) and TCP (layer 4) information
+1. How many ppackets are there?   
+2. What network protocol is being used? 
+3. What is the IP address of the source ?
+4. What is the IP address of the destination? 
+5. What is the port number the destination is listening on? 
+6. Do you notice the TCP three-way handshake in the packet list pane?
 
-Click on IP layer andclick on Source and Destination to see the IP addresses - are visible in the binary pane
+Comments:
 
-You can also notice the SEQ numbers in the TCP layer. These are used to keep track of the packets in the TCP connection and to ensure that they are delivered and assembled in the correct order.
+- In the packet details pane we see Frame, Ethernet (layer 2), IP (layer 3) and TCP (layer 4) information
+
+- By clicking on the IP layer (and Source and Destination) we see the IP addresses (also highlighted in the binary pane)
+
+- Notice the `SEQ numbers` in the TCP layer. These are used to keep track of the packets in the TCP connection and to ensure that they are delivered and assembled in the correct order.
+
+---
+
+This brings us to the end of this session and our first example with Wireshark.
+
+## Conclusion
+
+In this lecture we have covered the basics of networking, the TCP three-way handshake, the OSI model, and packet analysis using Wireshark.
+
+We have also seen how packets are used to transmit data over a network, and how the TCP three-way handshake is used to establish a connection between two systems.
 
 References:
 
